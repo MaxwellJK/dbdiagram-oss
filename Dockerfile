@@ -1,3 +1,5 @@
+FROM nginx:latest
+
 WORKDIR /app
 
 # RUN apt update
@@ -5,8 +7,9 @@ WORKDIR /app
 # RUN git clone https://github.com/TruDan/dbdiagram-oss.git
 
 RUN mkdir dbdiagram-oss
-COPY ./* ./dbdiagram-oss/
+COPY ./ ./dbdiagram-oss/
 
+RUN apt update
 RUN apt -y install npm
 RUN npm i -g yarn
 RUN npm i -g @quasar/cli

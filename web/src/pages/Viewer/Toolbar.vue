@@ -4,7 +4,6 @@
                     no-caps
                     class="dbml-fileselector bg-secondary"
                     align="left"
-                    @click="() => renameFile()"
                     anchor="bottom right" self="top right">
 
       <template #label>
@@ -21,16 +20,7 @@
           <q-item-section class="q-py-xs">
             <q-item-label>{{ file }}</q-item-label>
           </q-item-section>
-          <q-item-section thumbnail>
-            <q-btn
-              icon="delete"
-              size="sm"
-              flat
-              dense
-              round
-              @click="() => confirmDeleteFile(file)"
-            />
-          </q-item-section>
+         
         </q-item>
         <q-separator/>
         <q-item clickable
@@ -44,16 +34,7 @@
       </q-list>
     </q-btn-dropdown>
 
-    <q-btn
-      padding="sm"
-      size="md"
-      class="bg-secondary q-mx-xs"
-      @click="saveFile"
-    >
-      <q-icon
-        size="xs"
-        name="save"/>
-    </q-btn>
+
 
     <q-btn-dropdown
       padding="xs sm"

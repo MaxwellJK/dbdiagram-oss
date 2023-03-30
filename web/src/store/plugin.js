@@ -4,10 +4,11 @@ import { useFilesStore } from "src/store/files";
 
 
 const throttledSave = debounce(save, 150);
+
 const autoSave = debounce(() => {
   console.log("autosave");
   const files = useFilesStore();
-  files.saveFile()
+  files.saveFileGCS()
 }, 200);
 
 export default ({ store }) => {
@@ -56,8 +57,10 @@ export default ({ store }) => {
       store.$patch({
         currentFile: currentFile
       });
-      store.loadFileList();
-      store.loadFile(currentFile);
+      // store.loadFileList();
+      // store.loadFile(currentFile);
+      store.loadFileListGCS()
+      store.loadFileGCS(currentFile);
     })();
 
     store.$subscribe((mutation, state) => {

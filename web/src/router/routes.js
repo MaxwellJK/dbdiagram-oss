@@ -5,11 +5,25 @@ const routes = [
     children: [
       {
         path: "",
-        redirect: "editor"
+        redirect: "viewer"
         //component: () => import("pages/Index.vue")
       },
       {
-        path: "editor",
+        path: "viewer",
+        components: {
+          default: () => import("pages/Viewer/Index.vue"),
+          toolbar: () => import("pages/Viewer/Toolbar.vue")
+        }
+      }
+    ]
+  },
+
+  {
+    path: "/editor",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
         components: {
           default: () => import("pages/Editor/Index.vue"),
           toolbar: () => import("pages/Editor/Toolbar.vue")
@@ -17,6 +31,11 @@ const routes = [
       }
     ]
   },
+
+  // {
+  //   path: "viewer",
+  //   component: () => import("pages/Error404.vue")
+  // },
 
   // Always leave this as last one,
   // but you can also remove it
